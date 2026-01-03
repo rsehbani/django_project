@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Cookie</title>
+</head>
+<body>
+    <h1>Set Cookie</h1>
+    <form method="post" action="{% url 'process_cookie' %}">
+        {% csrf_token %}
+        <label for="cookie_value">Enter Cookie Value:</label>
+        <input type="text" id="cookie_value" name="cookie_value">
+        <button type="submit">Set Cookie</button>
+    </form>
+</body>
+</html>

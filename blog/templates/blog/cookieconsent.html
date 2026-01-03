@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %}
+{% if not request.COOKIES.cookie_consent %}
+<div class="cookie-consent-banner">
+    <p>We use cookies to improve your experience. By using our site, you accept cookies. 
+        <a href="{% url 'accept_cookies' %}">Accept</a>
+    </p>
+</div>
+{% endif %}
+{% endblock content %}

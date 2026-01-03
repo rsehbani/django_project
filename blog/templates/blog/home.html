@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+	
+{% block content %}
+{% if not request.COOKIES.cookie_consent %}
+<div class="cookie-consent-banner">
+    <p>We use cookies to improve your experience. By using our site, you accept cookies. 
+        <a href="{% url 'accept_cookies' %}">Accept</a>
+    </p>
+</div>
+{% endif %}
+<h1>{{response.content}} -----  {{expires_date}}</h1>
+<h1>My Posts</h1>
+	{% for post in posts %}
+		<h2>{{ post.title }}</h2>
+		<small>Published on {{ post.published_at | date:"M d, Y" }} by {{ post.author | title}}</small>
+		<p>{{ post.content }}</p>
+		
+		<p>
+			<a href="{% url 'post-edit' post.id %}">Edit</a> 
+			<a href="{% url 'post-delete' post.id%}">Delete</a>
+			<a href="{% url 'post-create' %}">create</a>
+		</p>
+	
+	{% endfor %}
+{% endblock content %}
